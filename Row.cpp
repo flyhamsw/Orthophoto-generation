@@ -63,4 +63,3 @@ RowInterpolated::RowInterpolated(double intpl_X, double intpl_Y, double intpl_Z,
 	roll = intpl_roll;
 	pitch = intpl_pitch;
 }
-

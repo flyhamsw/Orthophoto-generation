@@ -2,6 +2,7 @@
 
 using namespace std;
 
+//GPS Data
 class RowGPGGA
 {
 public:
@@ -22,6 +23,7 @@ public:
 	RowGPGGA(char*, char*, char*, char*, char*, char*, char*, char*, char*, char*, char*, char*, char*, char*);
 };
 
+//INS Data
 class RowPASHR
 {
 public:
@@ -39,6 +41,7 @@ public:
 	RowPASHR(char*, char*, char*, char*, char*, char*, char*, char*, char*, char*, char*);
 };
 
+//Event Data
 class RowPTNL
 {
 public:
@@ -52,6 +55,7 @@ public:
 	RowPTNL(char*, char*, char*, char*, char*, char*, char*);
 };
 
+//Matched Data
 class Row
 {
 public:
@@ -60,6 +64,7 @@ public:
 	Row(RowGPGGA*, RowPASHR*);
 };
 
+//Interpolated Data
 class RowInterpolated
 {
 public:
@@ -71,4 +76,3 @@ public:
 	double pitch;
 	RowInterpolated(double, double, double, double, double, double);
 };
-
