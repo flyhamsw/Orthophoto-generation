@@ -10,8 +10,8 @@ RowGPGGA::RowGPGGA(char* txt_time, char* txt_lat, char* txt_latHeading, char* tx
 	latHeading = txt_latHeading;
 	lng = txt_lng;
 	lngHeading = txt_latHeading;
-	gpsQuality = txt_gpsQuality;
-	numOfSV = txt_numOfSV;
+	gpsQuality = txt_gpsQuality;//
+numOfSV = txt_numOfSV;
 	HDOP = txt_HDOP;
 	alt = txt_attHeight;
 	altUnit = txt_altUnit;
