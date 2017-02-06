@@ -8,8 +8,8 @@ using namespace std;
 
 class ApxModifier
 {
-public:
-	Row* rowBefore; //GPS-INS Data before the event
+public: 
+	Row* rowBefore; //GPS-INS Data before the event geo-informatics
 	Row* rowAfter; //GPS-INS Data after the event
 	RowInterpolated* rowInterpolated; //Interpolated data
 
