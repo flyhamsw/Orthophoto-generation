@@ -23,7 +23,7 @@ public:
 	RowGPGGA(char*, char*, char*, char*, char*, char*, char*, char*, char*, char*, char*, char*, char*, char*);
 };
 
-//INS Data
+//INS Data(ins data)
 class RowPASHR
 {
 public:
