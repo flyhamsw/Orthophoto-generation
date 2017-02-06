@@ -24,7 +24,7 @@ void ortho()
 	double focal_length = 0.024;	// unit : m
 	double gsd = 0.0;
 
-	string input_foldername = "Input_Image\\";
+	string input_foldername = "Input_Image\\";  // Input the image
 	string output_foldername = "Results\\Orthoimage_Results\\";
 	string img_input, img_output, img_name;
 
@@ -40,8 +40,8 @@ void ortho()
 
 	if (!in.is_open())
 	{
-		cout << "EO ÆÄÀÏÀ» È®ÀÎÇÒ ¼ö ¾ø½À´Ï´Ù" << endl;
-		cout << "ÇÁ·Î±×·¥À» Á¾·áÇÏ°Ú½À´Ï´Ù. ¾Æ¹«Å°³ª ´©¸£¼¼¿ä" << endl;
+		cout << "EO íŒŒì¼ì„ í™•ì¸í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤" << endl;
+		cout << "í”„ë¡œê·¸ëž¨ì„ ì¢…ë£Œí•˜ê² ìŠµë‹ˆë‹¤. ì•„ë¬´í‚¤ë‚˜ ëˆ„ë¥´ì„¸ìš”" << endl;
 		_getch();
 		exit(0);
 	}
@@ -57,12 +57,12 @@ void ortho()
 		img_name = vec[k].imagename;
 		img_input = input_foldername + img_name;
 		cout << endl;
-		cout << img_name << " Ã³¸® ½ÃÀÛ" << endl;
+		cout << img_name << " ì²˜ë¦¬ ì‹œìž‘" << endl;
 
 		srcImage = imread(img_input.c_str());
 
 		if (vec[k].imagename == roiData[k].imagename) {
-			cout << roiData[k].imagename << "ÀÇ ROI¸¦ ÀÎ½ÄÇÕ´Ï´Ù" << endl;
+			cout << roiData[k].imagename << "ì˜ ROIë¥¼ ì¸ì‹í•©ë‹ˆë‹¤" << endl;
 			sub_srcImage = srcImage(Rect(roiData[k].pixelXY[0], roiData[k].pixelXY[1], roiData[k].pixelXY[2], roiData[k].pixelXY[3]));	// UL_X, UL_Y, LR_X, LR_Y
 		}
 		else {
@@ -73,17 +73,17 @@ void ortho()
 		pixel_cnt[1] = sub_srcImage.cols;	// column
 
 		if (sub_srcImage.empty()) {
-			cout << img_name << "¿¡ ÇØ´çÇÏ´Â »çÁøÀÌ ¾ø½À´Ï´Ù" << endl;
-			cout << "ÇÁ·Î±×·¥À» Á¾·áÇÏ°Ú½À´Ï´Ù. ¾Æ¹«Å°³ª ´©¸£¼¼¿ä" << endl;
+			cout << img_name << "ì— í•´ë‹¹í•˜ëŠ” ì‚¬ì§„ì´ ì—†ìŠµë‹ˆë‹¤" << endl;
+			cout << "í”„ë¡œê·¸ëž¨ì„ ì¢…ë£Œí•˜ê² ìŠµë‹ˆë‹¤. ì•„ë¬´í‚¤ë‚˜ ëˆ„ë¥´ì„¸ìš”" << endl;
 			_getch();
 			exit(0);
 		}
 
 		if (vec[k].eo[2] < 0)
 		{
-			cout << "Z °ª : " << vec[k].eo[2] << endl;
-			cout << k << "¹øÂ°ÀÇ Estimate EOÀÇ Z°ªÀÌ 0º¸´Ù ÀÛÀ¸´Ï È®ÀÎÇÏ½Ã±â ¹Ù¶ø´Ï´Ù" << endl;
-			cout << "ÇÁ·Î±×·¥À» Á¾·áÇÏ°Ú½À´Ï´Ù. ¾Æ¹«Å°³ª ´©¸£¼¼¿ä" << endl;
+			cout << "Z ê°’ : " << vec[k].eo[2] << endl;
+			cout << k << "ë²ˆì§¸ì˜ Estimate EOì˜ Zê°’ì´ 0ë³´ë‹¤ ìž‘ìœ¼ë‹ˆ í™•ì¸í•˜ì‹œê¸° ë°”ëžë‹ˆë‹¤" << endl;
+			cout << "í”„ë¡œê·¸ëž¨ì„ ì¢…ë£Œí•˜ê² ìŠµë‹ˆë‹¤. ì•„ë¬´í‚¤ë‚˜ ëˆ„ë¥´ì„¸ìš”" << endl;
 			_getch();
 			exit(0);
 		}
@@ -97,7 +97,7 @@ void ortho()
 		img_output = output_foldername + img_name;
 		imwrite(img_output.c_str(), dstImage);
 
-		cout << img_name << " ÀúÀå ¿Ï·á" << endl;
+		cout << img_name << " ì €ìž¥ ì™„ë£Œ" << endl;
 	}	
 }
 
