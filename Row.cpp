@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Row.h"
 
-
 using namespace std;
 
 RowGPGGA::RowGPGGA(char* txt_time, char* txt_lat, char* txt_latHeading, char* txt_lng, char* txt_lngHeading, char* txt_gpsQuality, char* txt_numOfSV, char* txt_HDOP, char* txt_attHeight, char* txt_altUnit, char* txt_heightWGS84, char* txt_heightWGS84Unit, char* txt_DGPS, char* txt_checksum)
