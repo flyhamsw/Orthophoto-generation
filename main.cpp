@@ -21,8 +21,8 @@ void LogFile(char* filename, int st, char* st_hms, int et, char* et_hms, int pt)
 	int nLine = 1;
 	while (!feof(pFile))
 	{
-		if (fgetc(pFile) == 10) // 라인 끝에 도착 Line 증가
-		{
+		if (fgetc(pFile) == 10) // 라인 끝에 도착 Line 증가  		
+코드{
 			nLine++;
 		}
 	}
