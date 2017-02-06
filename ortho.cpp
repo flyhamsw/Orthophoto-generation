@@ -42,7 +42,7 @@ bool ortho(char* EOname)
 		vector<Roi> roiData;
 		ReadROIFile(roi, roiData);*/
 
-		/*ifstream in("Results\\AT_Results\\Estimated_EO_¿Ã√µ300m.txt");*/
+		/*ifstream in("Results\\AT_Results\\Estimated_EO_Ïù¥Ï≤ú300m.txt");*/
 		ifstream in(EOname);
 		
 		/*ifstream in(EO);*/
@@ -50,12 +50,12 @@ bool ortho(char* EOname)
 
 		if (!in.is_open())
 		{		
-			/*cout << "EO ∆ƒ¿œ¿ª »Æ¿Œ«“ ºˆ æ¯Ω¿¥œ¥Ÿ" << endl;
-			cout << "«¡∑Œ±◊∑•¿ª ¡æ∑·«œ∞⁄Ω¿¥œ¥Ÿ. æ∆π´≈∞≥™ ¥©∏£ººø‰" << endl;
+			/*cout << "EO ÌååÏùºÏùÑ ÌôïÏù∏Ìï† Ïàò ÏóÜÏäµÎãàÎã§" << endl;
+			cout << "ÌîÑÎ°úÍ∑∏Îû®ÏùÑ Ï¢ÖÎ£åÌïòÍ≤†ÏäµÎãàÎã§. ÏïÑÎ¨¥ÌÇ§ÎÇò ÎàÑÎ•¥ÏÑ∏Ïöî" << endl;
 			_getch();*/
 			return false;
 		}
-		ReadEOFile(in, vec);
+		ReadEOFile(in, vec);//photo file read
 
 		//ofstream eo_ortho("Results\\Orthoimage_Results\\eo_ortho.txt");
 		//eo_ortho << "%%Image Name\tGSD(m)\tX\tY\trow\tcol\n" << endl;
@@ -67,27 +67,21 @@ bool ortho(char* EOname)
 			img_name = vec[k].imagename;
 			img_input = input_foldername + img_name;
 			cout << endl;
-			cout << img_name << " √≥∏Æ Ω√¿€" << endl;
+			cout << img_name << " Ï≤òÎ¶¨ ÏãúÏûë" << endl;
 
 			srcImage = imread(img_input.c_str());
 
 			pixel_cnt[0] = srcImage.rows;	// row
-			pixel_cnt[1] = srcImage.cols;	// column
-
-			if (srcImage.empty()) {
-				/*goto A;*/
-				/*cout << img_name << "ø° «ÿ¥Á«œ¥¬ ªÁ¡¯¿Ã æ¯Ω¿¥œ¥Ÿ" << endl;
-				cout << "«¡∑Œ±◊∑•¿ª ¡æ∑·«œ∞⁄Ω¿¥œ¥Ÿ. æ∆π´≈∞≥™ ¥©∏£ººø‰" << endl;
-				_getch();
-				exit(0);*/
+			pixel_cnt[1] = srcImage.cols;	// column/				
+exit(0);*/
 				return false;
 			}
 
 			if (vec[k].eo[2] < 0)
 			{
-				cout << "Z ∞™ : " << vec[k].eo[2] << endl;
-				cout << k << "π¯¬∞¿« Estimate EO¿« Z∞™¿Ã 0∫∏¥Ÿ ¿€¿∏¥œ »Æ¿Œ«œΩ√±‚ πŸ∂¯¥œ¥Ÿ" << endl;
-				cout << "«¡∑Œ±◊∑•¿ª ¡æ∑·«œ∞⁄Ω¿¥œ¥Ÿ. æ∆π´≈∞≥™ ¥©∏£ººø‰" << endl;
+				cout << "Z Í∞í : " << vec[k].eo[2] << endl;
+				cout << k << "Î≤àÏß∏Ïùò Estimate EOÏùò ZÍ∞íÏù¥ 0Î≥¥Îã§ ÏûëÏúºÎãà ÌôïÏù∏ÌïòÏãúÍ∏∞ Î∞îÎûçÎãàÎã§" << endl;
+				cout << "ÌîÑÎ°úÍ∑∏Îû®ÏùÑ Ï¢ÖÎ£åÌïòÍ≤†ÏäµÎãàÎã§. ÏïÑÎ¨¥ÌÇ§ÎÇò ÎàÑÎ•¥ÏÑ∏Ïöî" << endl;
 				_getch();
 				exit(0);
 			}
@@ -113,8 +107,8 @@ bool ortho(char* EOname)
 			// construct grid point
 			//dem_m(g_c, floor(row_s), floor(col_s), gsd, ground_height, dem_x, dem_y, dem_z);
 
-			double* x_fcs = new double[int(floor(row_s)*floor(col_s))];
-			double* y_fcs = new double[int(floor(row_s)*floor(col_s))];
+			double* x_fcs = new double[int(floor(row_s)*floor(col_s))];//x,y ÏßÄÏ†ï			
+double* y_fcs = new double[int(floor(row_s)*floor(col_s))];
 
 			// construct grid point & re-calculate image coordinate
 			cout << "image_coordinate" << endl;
@@ -143,15 +137,15 @@ bool ortho(char* EOname)
 			img_output = output_foldername + img_name;
 			//imwrite(img_output.c_str(), dstImage);
 			imwrite(img_output.substr(0, 51) + ".png", dstImage);
-			cout << img_name << " ¿˙¿Â øœ∑·" << endl;
+			cout << img_name << " Ï†ÄÏû• ÏôÑÎ£å" << endl;
 
 			cout << "writing .pgw" << endl;
 			ofstream jgw(img_output.substr(0, 51) + ".pgw");
 			jgw << gsd << endl << 0 << endl << 0 << endl << -gsd << endl << g_c[0] << endl << g_c[3];
 			jgw.close();
-			cout << img_name << " world file ¿˙¿Â øœ∑·" << endl;
+			cout << img_name << " world file Ï†ÄÏû• ÏôÑÎ£å" << endl;
 
-			//øµªÛ ¿˙¿Â ∞Ê∑Œø°º≠ øµªÛ¿ª ¥Ÿ∏• ∆˙¥ı∑Œ ¿Ãµø
+			//ÏòÅÏÉÅ Ï†ÄÏû• Í≤ΩÎ°úÏóêÏÑú ÏòÅÏÉÅÏùÑ Îã§Î•∏ Ìè¥ÎçîÎ°ú Ïù¥Îèô
 			string Oname = "C://uav_image/Result/"+ img_name + ".png";
 			string Opath = "C://uav_image/Result/Temp/"+img_name+".png";
 			const char *Fname = Oname.c_str();
