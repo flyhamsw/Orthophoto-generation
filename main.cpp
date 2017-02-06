@@ -21,7 +21,7 @@ void LogFile(char* filename, int st, char* st_hms, int et, char* et_hms, int pt)
 	int nLine = 1;
 	while (!feof(pFile))
 	{
-		if (fgetc(pFile) == 10) // ¶óÀÎ ³¡¿¡ µµÂø Line Áõ°¡
+		if (fgetc(pFile) == 10) // ë¼ì¸ ëì— ë„ì°© Line ì¦ê°€
 		{
 			nLine++;
 		}
@@ -53,7 +53,7 @@ void main() {
 	for (int k = 0; k < 10000; k++)
 	{
 		x = 0;
-		//Ã³¸®ÇÒ ¿µ»ó¿¡ ´ëÇÑ ¿µ»ó À§Ä¡ÀÚ¼¼ µ¥ÀÌÅÍÀÇ ÆÄÀÏ¸í ÀĞ¾î¿À±â
+		//ì²˜ë¦¬í•  ì˜ìƒì— ëŒ€í•œ ì˜ìƒ ìœ„ì¹˜ìì„¸ ë°ì´í„°ì˜ íŒŒì¼ëª… ì½ì–´ì˜¤ê¸°
 		find_file = ::FindFirstFileA("*.txt", &find_data);
 		if (find_file != INVALID_HANDLE_VALUE) {
 			do {
@@ -93,16 +93,14 @@ void main() {
 
 				char* EOname = file_name[i];
 
-				if ( ortho(EOname) )//txt ÆÄÀÏÀ» ³Ñ°Ü ¹Ş¾Æ ¿µ»ó Ã³¸®
+				if ( ortho(EOname) )//txt íŒŒì¼ì„ ë„˜ê²¨ ë°›ì•„ ì˜ìƒ ì²˜ë¦¬
 				{					
-					//Ã³¸®µÈ txt ÆÄÀÏ ÀúÀå °æ·Î º¯°æ
+					//ì²˜ë¦¬ëœ txt íŒŒì¼ ì €ì¥ ê²½ë¡œ ë³€ê²½
 					char Dpath[500] = "C://uav_image/Done/";
 					strcat_s(Dpath, file_name[i]);
 					rename(file_name[i], Dpath);
 					fProcessed = true;
 				}
-
-				//Sleep(4000);
 
 				std::chrono::system_clock::time_point tpEnd = std::chrono::system_clock::now();
 
@@ -117,7 +115,7 @@ void main() {
 			}
 			if (!fProcessed)
 			{
-				//Ã³¸®ÇÒ ¿µ»óÀÌ ¾ø´Â °æ¿ì ÄÚµå°¡ Àá½Ã ½¬¾ú´Ù°¡ µ¿ÀÛ
+				//ì²˜ë¦¬í•  ì˜ìƒì´ ì—†ëŠ” ê²½ìš° ì½”ë“œê°€ ì ì‹œ ì‰¬ì—ˆë‹¤ê°€ ë™ì‘
 				Sleep(timeWait);
 			}
 		}
